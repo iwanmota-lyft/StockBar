@@ -23,26 +23,20 @@ Built with SwiftUI. No account required, no API keys needed — data comes direc
 
 ### Build from source
 
-Requires **Xcode 15+** and **macOS 14 Sonoma** or later.
+Requires **Xcode 15+** (for Swift toolchain) and **macOS 14 Sonoma** or later.
 
 ```bash
 git clone https://github.com/simonsruggi/StockBar.git
 cd StockBar
-swift build -c release
+./build.sh
+cp -R StockBar.app /Applications/
 ```
 
-The binary will be at `.build/release/StockBar`.
-
-To create an app bundle and install:
-
-```bash
-xcodebuild -scheme StockBar -configuration Release -destination 'platform=macOS' -derivedDataPath .build/xcode build
-cp .build/xcode/Build/Products/Release/StockBar /Applications/StockBar.app/Contents/MacOS/StockBar
-```
+`build.sh` compiles a release binary, assembles a proper `.app` bundle with the correct `Info.plist` and icons, and ad-hoc codesigns it for local use.
 
 ### Run
 
-Double-click `StockBar.app` or:
+Double-click `StockBar.app` in `/Applications`, or:
 
 ```bash
 open /Applications/StockBar.app
